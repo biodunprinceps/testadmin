@@ -1,1 +1,82 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the theme object.
+$angulardashboard-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$azure-palette,
+    tertiary: mat.$blue-palette,
+  ),
+  density: (
+    scale: 0,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+:root {
+  @include mat.all-component-themes($angulardashboard-theme);
+}
+
+// Comment out the line below if you want to use the pre-defined typography utility classes.
+// For more information: https://material.angular.io/guide/typography#using-typography-styles-in-your-application.
+// @include mat.typography-hierarchy($angulardashboard-theme);
+
+// Comment out the line below if you want to use the deprecated `color` inputs.
+// @include mat.color-variants-backwards-compatibility($angulardashboard-theme);
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Responsive Sidebar */
+@media (max-width: 767px) {
+  .w-64 {
+    width: 100%;
+  }
+}
+
+/* Add Contact Form Styles */
+.add-contact-form input,
+.add-contact-form textarea {
+  @apply border border-gray-300 rounded-md px-3 py-2 w-full;
+}
+
+.add-contact-form label {
+  @apply block text-gray-700 font-semibold mb-1;
+}
+
+.add-contact-form button {
+  @apply bg-blue-500 text-white px-4 py-2 rounded-md;
+}
+
+/* Dashboard Table Styles */
+.dashboard-table {
+  @apply w-full border-collapse;
+}
+
+.dashboard-table th,
+.dashboard-table td {
+  @apply border border-gray-300 px-4 py-2;
+}
+
+.dashboard-table th {
+  @apply bg-gray-100 text-gray-700 font-semibold;
+}
+
+/* Map Styles */
+.dashboard-map {
+  @apply w-full h-96 rounded-md;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
