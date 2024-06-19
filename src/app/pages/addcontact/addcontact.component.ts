@@ -50,8 +50,8 @@ export class AddcontactComponent implements OnInit {
         [this.createAddressGroup()],
         [Validators.required, Validators.maxLength(5)]
       ),
-      longitude: ['-2.61132', { updateOn: 'blur' }],
-      latitude: ['54.543434', { updateOn: 'blur' }],
+      longitude: ['', { updateOn: 'blur' }],
+      latitude: ['', { updateOn: 'blur' }],
     });
   }
 
@@ -91,7 +91,7 @@ export class AddcontactComponent implements OnInit {
     // Check if the address is empty
     if (address === '') {
       console.log('Address is empty, skipping API call.');
-      return; // Return early to skip the API call
+      return { lat: '', lng: '' }; // Return early to skip the API call
     }
 
     const apiUrl = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(
@@ -117,7 +117,7 @@ export class AddcontactComponent implements OnInit {
 
   createAddressGroup() {
     return this.formBuilder.group({
-      address: ['Nigeria', Validators.required],
+      address: ['', Validators.required],
     });
   }
 
