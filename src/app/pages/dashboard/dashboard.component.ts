@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from '../../services/localstorage.service';
 import { CommonModule } from '@angular/common';
-
+import { GoogleMapsModule } from '@angular/google-maps';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,GoogleMapsModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
